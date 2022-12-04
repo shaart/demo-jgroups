@@ -1,7 +1,7 @@
 package com.github.shaart.demo.jgroups.service;
 
-import com.github.shaart.demo.jgroups.dto.PersonsDeleteResponseDto;
 import com.github.shaart.demo.jgroups.dto.PersonDto;
+import com.github.shaart.demo.jgroups.dto.PersonsDeleteResponseDto;
 import com.github.shaart.demo.jgroups.dto.PersonsResponseDto;
 import com.github.shaart.demo.jgroups.entity.PersonEntity;
 import com.github.shaart.demo.jgroups.repository.PersonRepository;
@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service

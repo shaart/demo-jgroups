@@ -1,1 +1,3 @@
-
+app:
+  replicas:
+    name: demo-app #redefine for each replica for clarification

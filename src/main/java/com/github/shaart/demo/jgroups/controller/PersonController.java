@@ -1,7 +1,9 @@
 package com.github.shaart.demo.jgroups.controller;
 
+import com.github.shaart.demo.jgroups.dto.BroadcastResponseDto;
 import com.github.shaart.demo.jgroups.dto.PersonsDeleteResponseDto;
 import com.github.shaart.demo.jgroups.dto.PersonDto;
+import com.github.shaart.demo.jgroups.jgroups.ServiceReplicasMessenger;
 import com.github.shaart.demo.jgroups.service.PersonService;
 import com.github.shaart.demo.jgroups.dto.PersonsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonController {
 
     private final PersonService personService;
+    private final ServiceReplicasMessenger serviceReplicasMessenger;
 
     @GetMapping("/persons")
     public PersonsResponseDto getPersons() {
@@ -35,5 +38,10 @@ public class PersonController {
     @DeleteMapping("/persons")
     public PersonsDeleteResponseDto clearPersons() {
         return personService.deleteAllPersons();
+    }
+
+    @PostMapping("/broadcast/persons/{name}")
+    public BroadcastResponseDto broadcastCreatePerson(@PathVariable String name) {
+        return serviceReplicasMessenger.sendNewPerson(name);
     }
 }
